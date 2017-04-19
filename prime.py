@@ -1,4 +1,3 @@
-import os
 import random
 
 # PARAMETERS
@@ -30,15 +29,14 @@ def isPrime(n):
     # 2. Primality Test
     # Test all entries in the 'primes' list
     for a in primes:
-        x = [((a ** (m * (2 ** i))) % n) for i in range(0, k)]
+        x = [pow(a, m * (2 ** i), n) for i in range(0, k)]
         # If there is no -1 (n - 1) in the following blank, return 'composite'
-        if (a ** m) % n != 1 and none_in_x_is_n(x, n - 1):
+        if pow(a, m, n) != 1 and none_in_x_is_n(x, n - 1):
             return False
-        elif (a ** m) % n == 1 or not none_in_x_is_n(x, n - 1):
+        elif pow(a, m, n) == 1 or not none_in_x_is_n(x, n - 1):
             continue
 
     return True
-
 
 
 # generate a 128-bit prime number
