@@ -1,4 +1,5 @@
 import os
+import random
 
 # PARAMETERS
 # primes under 1000
@@ -15,21 +16,45 @@ primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67
 
 
 # n -> integer, return if n is prime or not
-def prime_test(n):
-    # test if n is divisible by primes under 1000
-    for i in primes:
-        if n % i == 0:
-            return 0
+def isPrime(n):
+    # Miller-Rabin Primality Test
+    # 1. Factorize n - 1 as m * 2^k
+    k = 0
+    temp = n - 1
+    while temp % 2 == 0:
+        temp = temp // 2
+        k += 1
     else:
-        return 1
+        m = temp
+
+    # 2. Primality Test
+    # Test all entries in the 'primes' list
+    for a in primes:
+        x = [((a ** (m * (2 ** i))) % n) for i in range(0, k)]
+        # If there is no -1 (n - 1) in the following blank, return 'composite'
+        if (a ** m) % n != 1 and none_in_x_is_n(x, n - 1):
+            return False
+        elif (a ** m) % n == 1 or not none_in_x_is_n(x, n - 1):
+            continue
+
+    return True
+
 
 
 # generate a 128-bit prime number
-def generate_a_prime_number(num_bytes):
+def generate_a_prime_number(num_of_bits):
     # keep creating a random 16-byte (128-bit) number until there is a prime number
     while 1:
-        num = int.from_bytes(os.urandom(num_bytes), byteorder="big")
-        if prime_test(num):
+        # randomly generate a 128-bit number
+        num = random.getrandbits(num_of_bits)
+        if isPrime(num):
             return num
         else:
             continue
+
+
+def none_in_x_is_n(x, n):
+    for i in x:
+        if i == n:
+            return False
+    return True
