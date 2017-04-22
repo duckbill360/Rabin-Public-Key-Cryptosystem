@@ -1,5 +1,5 @@
 # Rabin.py
-
+import prime
 
 # encryption function
 # plaintext is a 224-bit number
@@ -19,4 +19,6 @@ def padding(plaintext):
 # encryption function
 def decryption(ciphertext, n):
     plaintext = 0
+    # find sqrt
+
     return plaintext
