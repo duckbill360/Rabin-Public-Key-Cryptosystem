@@ -18,7 +18,7 @@ if __name__ == '__main__':
     print('<Miller-Rabin>')
     print(format(prime.generate_a_prime_number(256), 'x'))
     # Encryption
-    print('<Rabin Encryption>')
+    print('\n<Rabin Encryption>')
     print('p =', format(p, 'x'))
     print('q =', format(q, 'x'))
     print('n = pq =', format(n, 'x'))
