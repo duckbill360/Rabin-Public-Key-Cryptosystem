@@ -77,9 +77,36 @@ def Zp_sqrt(a, p):
     return
 
 
+# Find SQROOT in Zp where p = 3 mod 4
+def sqrt_p_3_mod_4(a, p):
+    r = pow(a, (p + 1) // 4, p)
+    return r
+
+
+# Find SQROOT in Zp where p = 5 mod 8
+def sqrt_p_5_mod_8(a, p):
+    d = pow(a, (p - 1) // 4, p)
+    r =0
+    if d == 1:
+        r = pow(a, (p + 3) // 8, p)
+    elif d == p - 1:
+        r = 2 * a * pow(4 * a, (p - 5) // 8, p) % p
+
+    return r
+
+
 # Legendre symbol
 def Legendre(a, p):
     return pow(a, (p - 1) / 2, p)
+
+
+#
+def egcd(a, b):
+    if a == 0:
+        return b, 0, 1
+    else:
+        gcd, y, x = egcd(b % a, a)
+        return gcd, x - (b // a) * y, y
 
 
 # Additional functions
