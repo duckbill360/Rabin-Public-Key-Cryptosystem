@@ -22,9 +22,10 @@ def add_space(string):
 # main()
 if __name__ == '__main__':
 
+    ###########################################################
     # 256-bit prime number generation
     print('<Miller-Rabin>')
-    print(format(prime.generate_a_prime_number(256), 'x'))
+    print(add_space(format(prime.generate_a_prime_number(256), 'x')))
 
     ###########################################################
     # Encryption

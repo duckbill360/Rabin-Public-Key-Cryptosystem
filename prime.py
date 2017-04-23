@@ -51,32 +51,6 @@ def generate_a_prime_number(num_of_bits):
             continue
 
 
-# square root of a mod p
-def Zp_sqrt(a, p):
-
-    # Initial check
-    if Legendre(a, p) == p - 1:
-        return 0
-
-    # Select b s.t. (b/p) = -1
-    b = random.randint(1, p - 1)
-    while Legendre(b, p) != p - 1:
-        b = random.randint(1, p - 1)
-    # Represent p - 1 as t*2^s
-    s = 0
-    temp = p - 1
-    while temp % 2 == 0:
-        temp = temp // 2
-        s += 1
-    else:
-        t = temp
-
-    n = pow(a, p - 1, p)
-    c, r = pow(b, t, p), pow(a, (t + 1) / 2, p)
-
-    return
-
-
 # Find SQROOT in Zp where p = 3 mod 4
 def sqrt_p_3_mod_4(a, p):
     r = pow(a, (p + 1) // 4, p)
