@@ -19,6 +19,7 @@ def padding(plaintext):
 # encryption function
 def decryption(a, p, q):
     n = p * q
+    r, s = 0, 0
     # find sqrt
     # for p
     if p % 4 == 3:
